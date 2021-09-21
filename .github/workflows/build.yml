@@ -29,6 +29,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install poetry==1.1.9
+          poetry config experimental.new-installer false # New installer does not support python 3.10 yet
           poetry install
       - name: Test with pytest
         run: |
