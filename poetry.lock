@@ -116,6 +116,14 @@ ssh = ["bcrypt (>=3.1.5)"]
 test = ["pytest (>=3.6.0,!=3.9.0,!=3.9.1,!=3.9.2)", "pretend", "iso8601", "pytz", "hypothesis (>=1.11.4,!=3.79.2)"]
 
 [[package]]
+name = "decorator"
+version = "5.1.0"
+description = "Decorators for Humans"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
 name = "fido2"
 version = "0.8.1"
 description = "Python based FIDO 2.0 library"
@@ -130,6 +138,18 @@ uhid-freebsd = {version = ">=1.2.1", markers = "platform_system == \"FreeBSD\""}
 
 [package.extras]
 pcsc = ["pyscard"]
+
+[[package]]
+name = "gssapi"
+version = "1.6.2"
+description = "Python GSSAPI Wrapper"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+decorator = "*"
+six = ">=1.4.0"
 
 [[package]]
 name = "idna"
@@ -280,14 +300,6 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
-name = "pykerberos"
-version = "1.2.1"
-description = "High-level interface to Kerberos"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "pyparsing"
 version = "2.4.7"
 description = "Python parsing module"
@@ -390,18 +402,16 @@ security = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)"]
 socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
 
 [[package]]
-name = "requests-kerberos"
-version = "0.12.0"
-description = "A Kerberos authentication handler for python-requests"
+name = "requests-gssapi"
+version = "1.2.3"
+description = "A GSSAPI authentication handler for python-requests"
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-cryptography = {version = ">=1.3", markers = "python_version != \"3.3\""}
-pykerberos = {version = ">=1.1.8,<2.0.0", markers = "sys_platform != \"win32\""}
+gssapi = "*"
 requests = ">=1.1.0"
-winkerberos = {version = ">=0.5.0", markers = "sys_platform == \"win32\""}
 
 [[package]]
 name = "requests-negotiate-sspi"
@@ -464,14 +474,6 @@ secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "cer
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
-name = "winkerberos"
-version = "0.8.0"
-description = "High level interface to SSPI for Kerberos client auth"
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-
-[[package]]
 name = "zipp"
 version = "1.2.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -498,7 +500,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.5"
-content-hash = "dcbcc8729e2e98a2eb822fe7b0b73be647dc0a0d3c21c34dc45097d39447ae7d"
+content-hash = "4d58156b44243e23708ea9813e0a296638a379942439bed1e793b2348a3b1f8c"
 
 [metadata.files]
 atomicwrites = [
@@ -621,8 +623,18 @@ cryptography = [
     {file = "cryptography-3.2.1-cp38-cp38-win_amd64.whl", hash = "sha256:d25cecbac20713a7c3bc544372d42d8eafa89799f492a43b79e1dfd650484851"},
     {file = "cryptography-3.2.1.tar.gz", hash = "sha256:d3d5e10be0cf2a12214ddee45c6bd203dab435e3d83b4560c03066eda600bfe3"},
 ]
+decorator = [
+    {file = "decorator-5.1.0-py3-none-any.whl", hash = "sha256:7b12e7c3c6ab203a29e157335e9122cb03de9ab7264b137594103fd4a683b374"},
+    {file = "decorator-5.1.0.tar.gz", hash = "sha256:e59913af105b9860aa2c8d3272d9de5a56a4e608db9a2f167a8480b323d529a7"},
+]
 fido2 = [
     {file = "fido2-0.8.1.tar.gz", hash = "sha256:449068f6876f397c8bb96ebc6a75c81c2692f045126d3f13ece21d409acdf7c3"},
+]
+gssapi = [
+    {file = "gssapi-1.6.2-cp36-cp36m-win_amd64.whl", hash = "sha256:334e1d4af47773afa99b1128c3ab598f007ff0533059259fef3cf1824e618726"},
+    {file = "gssapi-1.6.2-cp37-cp37m-win_amd64.whl", hash = "sha256:c3ca0971813458477100b2fc33c5a72e1709c37746a9170f08604dabba68f125"},
+    {file = "gssapi-1.6.2-cp38-cp38-win_amd64.whl", hash = "sha256:8a91c9971a4f8e4c05fbed40a215501861352e903f732eeabfc7bc49a57d8b95"},
+    {file = "gssapi-1.6.2.tar.gz", hash = "sha256:a7e7e991ef83f19866191756f6472c601aa043400dc4ecde912087a8c7aa00ef"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
@@ -716,9 +728,6 @@ pycparser = [
     {file = "pycparser-2.20-py2.py3-none-any.whl", hash = "sha256:7582ad22678f0fcd81102833f60ef8d0e57288b6b5fb00323d101be910e35705"},
     {file = "pycparser-2.20.tar.gz", hash = "sha256:2d475327684562c3a96cc71adf7dc8c4f0565175cf86b6d7a404ff4c771f15f0"},
 ]
-pykerberos = [
-    {file = "pykerberos-1.2.1.tar.gz", hash = "sha256:4f2dca8df5f84a3be039c026893850d731a8bb38395292e1610ffb0a08ba876c"},
-]
 pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
     {file = "pyparsing-2.4.7.tar.gz", hash = "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"},
@@ -753,9 +762,8 @@ requests = [
     {file = "requests-2.25.1-py2.py3-none-any.whl", hash = "sha256:c210084e36a42ae6b9219e00e48287def368a26d03a048ddad7bfee44f75871e"},
     {file = "requests-2.25.1.tar.gz", hash = "sha256:27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"},
 ]
-requests-kerberos = [
-    {file = "requests-kerberos-0.12.0.tar.gz", hash = "sha256:9d21f15241c53c2ad47e813138b9aee4b9acdd04b82048c4388ade15f40a52fd"},
-    {file = "requests_kerberos-0.12.0-py2.py3-none-any.whl", hash = "sha256:5733abc0b6524815f6fc72d5c0ec9f3fb89137b852adea2a461c45931f5675e0"},
+requests-gssapi = [
+    {file = "requests-gssapi-1.2.3.tar.gz", hash = "sha256:20784508981401f7153c933eed095338933a40818da65a259dbf2d80dccb150e"},
 ]
 requests-negotiate-sspi = [
     {file = "requests_negotiate_sspi-0.5.2-py2.py3-none-any.whl", hash = "sha256:84ca9e81cfd3f2bd5eede5f8eddec1d5b58d957efac5e7fc078a3b323d296b77"},
@@ -779,23 +787,6 @@ uhid-freebsd = [
 urllib3 = [
     {file = "urllib3-1.26.7-py2.py3-none-any.whl", hash = "sha256:c4fdf4019605b6e5423637e01bc9fe4daef873709a7973e195ceba0a62bbc844"},
     {file = "urllib3-1.26.7.tar.gz", hash = "sha256:4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece"},
-]
-winkerberos = [
-    {file = "winkerberos-0.8.0-cp27-cp27m-win32.whl", hash = "sha256:1f6fb78c7f1a38f9128cf01733109b500495778b573eceab214d5ee96fd80e0f"},
-    {file = "winkerberos-0.8.0-cp27-cp27m-win_amd64.whl", hash = "sha256:e0a368af62e2ce340ad7da3b94d07c7758f70cd7d251932ca0b203a59148abd8"},
-    {file = "winkerberos-0.8.0-cp34-cp34m-win32.whl", hash = "sha256:b6e79a9042d63ea4dbf94e558d587332aab0d74e5c81a659a121d827ad217832"},
-    {file = "winkerberos-0.8.0-cp34-cp34m-win_amd64.whl", hash = "sha256:378b5be58554ded93cba042d601e3c8b5aa9f6e4e16d1916da5a236296deaad8"},
-    {file = "winkerberos-0.8.0-cp35-cp35m-win32.whl", hash = "sha256:a8f1b76ee723df371d57ded8e75cdc0e273ddf2bf2747b94382cd5702133faf1"},
-    {file = "winkerberos-0.8.0-cp35-cp35m-win_amd64.whl", hash = "sha256:fa98b3c52ed18a8832577618a3a69ec6c5311da72bf2a4a06227965b7c60c95c"},
-    {file = "winkerberos-0.8.0-cp36-cp36m-win32.whl", hash = "sha256:d0e175dcb377b83851e4cb79b2f8e7bb4549b78a04805350ebf07a2948ac9280"},
-    {file = "winkerberos-0.8.0-cp36-cp36m-win_amd64.whl", hash = "sha256:4744447f9a2c372d5ab8d2e94e0527c760526cb9f0b60ce17686713542efa7ee"},
-    {file = "winkerberos-0.8.0-cp37-cp37m-win32.whl", hash = "sha256:c4ce21a6687459625574c70918d6da369925c16f8581cadf3112dd48f7efefc2"},
-    {file = "winkerberos-0.8.0-cp37-cp37m-win_amd64.whl", hash = "sha256:c72dfaa89bf493e4f340e19389b45dab680356c9586b5b2114d62b24a4cf9b31"},
-    {file = "winkerberos-0.8.0-cp38-cp38-win32.whl", hash = "sha256:4c05050cdd38a9c0ed56be7bdc92789da35ce0da1ee6c7489c4981d790665740"},
-    {file = "winkerberos-0.8.0-cp38-cp38-win_amd64.whl", hash = "sha256:f77363b0f20d0c753404ef432156e283f24218c99411029d48c8d2fda5652998"},
-    {file = "winkerberos-0.8.0-cp39-cp39-win32.whl", hash = "sha256:8546ae9ee7906dbad4bf66f8651b8e4fb20177f66c2796723304a23b52165c30"},
-    {file = "winkerberos-0.8.0-cp39-cp39-win_amd64.whl", hash = "sha256:5686eb22f85eb4b4c1825f251bf42a36cb44b00e84dcd040a54ba1ee2718fd87"},
-    {file = "winkerberos-0.8.0.zip", hash = "sha256:2af9776b27dfdfe0bfdce1960c81078302588067112c32c663dc3a01412e04da"},
 ]
 zipp = [
     {file = "zipp-1.2.0-py2.py3-none-any.whl", hash = "sha256:e0d9e63797e483a30d27e09fffd308c59a700d365ec34e93cc100844168bf921"},
