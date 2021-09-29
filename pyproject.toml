@@ -53,3 +53,10 @@ pytest = [
     { version = "^6.1.2", python = "^3.5.0" },
     { version = ">=6.2.5", python = ">=3.6" },
 ]
+
+[tool.poetry.dev-dependencies.cython]
+# Add Cython as a dev dependency on Windows with python 3.10+ to compile lxml
+# See https://github.com/python-poetry/poetry/issues/2789
+# and https://github.com/python-poetry/poetry/pull/2794
+version = "^0.29.24"
+markers = "python_version >= '3.10' and platform_system != 'Windows'"
