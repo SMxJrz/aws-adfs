@@ -52,6 +52,14 @@ jobs:
           choco install --no-progress --yes --ignore-detected-reboot --allow-downgrade mitkerberos --install-arguments "'ADDLOCAL=ALL'" || true # choco will fail despite the installation working, see https://github.com/pythongssapi/python-gssapi/blob/v1.7.0/ci/lib-setup.sh#L88-L89
         if: matrix.os == 'windows-latest'
 
+      - name: Inject Cython in virtualenv on windows-latest with python 3.10-dev to compile lxml
+        run: |
+          poetry config virtualenvs.in-project false # Easier to locate virtualenv
+          python -m venv .venv
+          dir .venv/bin/
+          .venv/bin/python.exe -m pip install Cython
+        if: matrix.os == 'windows-latest' && matrix.python-version == '3.10-dev'
+
       - name: Install aws-adfs and its dependencies
         run: |
           poetry install
