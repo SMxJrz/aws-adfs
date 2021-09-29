@@ -57,7 +57,7 @@ jobs:
           poetry config virtualenvs.in-project false # Easier to locate virtualenv
           python -m venv .venv
           dir .venv/Scripts
-          .venv/Scripts/python.cmd -m pip install Cython --install-option="--no-cython-compile"
+          .venv/Scripts/pip.exe install Cython --install-option="--no-cython-compile"
         if: matrix.os == 'windows-latest' && matrix.python-version == '3.10-dev'
 
       - name: Install aws-adfs and its dependencies
