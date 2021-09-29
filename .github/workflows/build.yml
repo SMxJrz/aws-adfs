@@ -47,6 +47,12 @@ jobs:
         run: |
           pip install poetry==${{ env.POETRY_VERSION }}
 
+      - name: Debug Windows
+        run: |
+          Get-ChildItem Env:
+          dir C:\\hostedtoolcache\\windows\\Java_Temurin-Hotspot_jdk
+        if: matrix.os == 'windows-latest'
+
       - name: Install aws-adfs and its dependencies
         run: |
           poetry install
