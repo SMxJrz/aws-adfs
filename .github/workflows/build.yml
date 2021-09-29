@@ -53,10 +53,16 @@ jobs:
           dir C:\\hostedtoolcache\\windows\\Java_Temurin-Hotspot_jdk
         if: matrix.os == 'windows-latest'
 
-      - name: Install Windows system dependencies
+      - name: Install MIT Kerberos - Windows system dependency
         run: |
           choco install --no-progress --yes --ignore-detected-reboot --allow-downgrade mitkerberos --install-arguments "'ADDLOCAL=ALL'" || true # choco will fail despite the installation working, see https://github.com/pythongssapi/python-gssapi/blob/v1.7.0/ci/lib-setup.sh#L88-L89
         if: matrix.os == 'windows-latest'
+
+      - name: Install all Microsoft Visual C++ Runtimes version - Windows system dependencies
+        run: |
+          choco install vcredist-all
+        if: matrix.os == 'windows-latest' && matrix.python-version == '3.5'
+
 
       - name: Install aws-adfs and its dependencies
         run: |
