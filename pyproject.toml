@@ -34,6 +34,10 @@ botocore = ">=1.12.6"
 click = "*"
 configparser = "*"
 fido2 = "^0.8.1" # fido2 0.9.0 is a breaking release
+gssapi = [
+    { version = "^1.6.2", markers = "python_version ~= '3.5.0' and platform_system != 'Windows'" },
+    { version = ">=1.7.0", markers = "python_version >= '3.6' and platform_system != 'Windows'" },
+]
 lxml = "*"
 requests = "*"
 requests-gssapi = [

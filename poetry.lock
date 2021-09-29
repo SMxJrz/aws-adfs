@@ -152,6 +152,17 @@ decorator = "*"
 six = ">=1.4.0"
 
 [[package]]
+name = "gssapi"
+version = "1.7.0"
+description = "Python GSSAPI Wrapper"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+decorator = "*"
+
+[[package]]
 name = "idna"
 version = "2.10"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -500,7 +511,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.5"
-content-hash = "4d58156b44243e23708ea9813e0a296638a379942439bed1e793b2348a3b1f8c"
+content-hash = "27ba1c7ae78e8bcc22903ff1dc401e9a3b430bccf8c0f490ee87ec433de27956"
 
 [metadata.files]
 atomicwrites = [
@@ -635,6 +646,15 @@ gssapi = [
     {file = "gssapi-1.6.2-cp37-cp37m-win_amd64.whl", hash = "sha256:c3ca0971813458477100b2fc33c5a72e1709c37746a9170f08604dabba68f125"},
     {file = "gssapi-1.6.2-cp38-cp38-win_amd64.whl", hash = "sha256:8a91c9971a4f8e4c05fbed40a215501861352e903f732eeabfc7bc49a57d8b95"},
     {file = "gssapi-1.6.2.tar.gz", hash = "sha256:a7e7e991ef83f19866191756f6472c601aa043400dc4ecde912087a8c7aa00ef"},
+    {file = "gssapi-1.7.0-cp36-cp36m-win32.whl", hash = "sha256:3f8dd4352db5f08f0dea5c2382be70840ebc0f391e3de0d932a158b764be2f4f"},
+    {file = "gssapi-1.7.0-cp36-cp36m-win_amd64.whl", hash = "sha256:1e9bba512b7e731a0f90474866119445ffb2ffba9b8a4f2c54ef71263deab849"},
+    {file = "gssapi-1.7.0-cp37-cp37m-win32.whl", hash = "sha256:de7543e7572ffba32ebaf14606eb27358e243699ab71db15d67dce662f284c33"},
+    {file = "gssapi-1.7.0-cp37-cp37m-win_amd64.whl", hash = "sha256:ea5f1ea7d1caf27184acaa8b284534db9e19633d6be44143f7c6d34e85189ffb"},
+    {file = "gssapi-1.7.0-cp38-cp38-win32.whl", hash = "sha256:98c94f5d4019c35d2c4eda4cd2d9e0eae89b7c25c15cdddff1e8ff75a11eb9aa"},
+    {file = "gssapi-1.7.0-cp38-cp38-win_amd64.whl", hash = "sha256:1ae9a7ad4a2423c5560be849ebcb2d9e61d704d6ee38075c574bdeefb6b29499"},
+    {file = "gssapi-1.7.0-cp39-cp39-win32.whl", hash = "sha256:87bb5714aea7c15fefa40ab4742af8babd5f68cdf14da0a637e1df1c72ebaccd"},
+    {file = "gssapi-1.7.0-cp39-cp39-win_amd64.whl", hash = "sha256:97c1e4119ff1ff90480cec2f229dfef0d08edff83cd734c783b486b4e19a98a8"},
+    {file = "gssapi-1.7.0.tar.gz", hash = "sha256:e7b8ae92033f9b487762f7dc7dbf55616b27cf767c1fc0126cdc88414df4111c"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
