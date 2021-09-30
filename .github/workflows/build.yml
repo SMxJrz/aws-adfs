@@ -54,7 +54,7 @@ jobs:
 
       - name: Inject Cython in virtualenv on windows-latest with python 3.10-dev to compile lxml
         run: |
-          poetry config virtualenvs.in-project false # Easier to locate virtualenv
+          poetry config virtualenvs.in-project true # Easier to locate virtualenv
           python -m venv .venv
           dir .venv/Scripts
           .venv/Scripts/pip.exe install Cython --install-option="--no-cython-compile"
